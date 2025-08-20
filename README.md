@@ -53,13 +53,14 @@ Crea un archivo **`.env`** en la raíz del proyecto:
 
 ```bash
 # ========================
-# Configuración de la BD
+# Configuración de la BD en caso si quieres desplegar bueno seria dockerizarlo y conectar - utilizo mas railways para despliegue
+# pero tmb es mas accesible para hacer pruebas de produccion.
 # ========================
 DB_HOST=localhost
 DB_PORT=3306
-DB_NAME=proyecto_xyz
-DB_USER=app_user
-DB_PASS=app_password
+DB_NAME=gestion
+DB_USER=root
+DB_PASS=123456
 
 # ========================
 # Eureka Server
