@@ -1,0 +1,56 @@
+server:
+  port: 8099
+
+spring:
+  application:
+    name: API-GATEWAY
+
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: false
+
+      routes:
+        - id: usuarios
+          uri: lb://USUARIOS
+          predicates:
+            - Path=/api/usuarios/**,/api/auth/**
+
+        - id: roles
+          uri: lb://ROLES
+          predicates:
+            - Path=/api/roles/**
+
+        - id: clientes
+          uri: lb://CLIENTES
+          predicates:
+            - Path=/api/clientes/**
+
+        - id: detalleventa
+          uri: lb://DETALLEVENTA
+          predicates:
+            - Path=/api/detalles/**
+
+        - id: productos
+          uri: lb://PRODUCTOS
+          predicates:
+            - Path=/api/productos/**
+
+        - id: proveedores
+          uri: lb://PROVEEDORES
+          predicates:
+            - Path=/api/proveedores/**
+
+        - id: ventas
+          uri: lb://VENTAS
+          predicates:
+            - Path=/api/ventas/**
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
